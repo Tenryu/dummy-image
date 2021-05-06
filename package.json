@@ -1,0 +1,25 @@
+{
+  "name": "@tenryu/dummy-image",
+  "version": "0.1.0",
+  "publishConfig": {
+    "access": "public"
+  },
+  "description": "Easily get dummy images with JavaScript on the web.",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Tenryu/dummy-image.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Tenryu/dummy-image/issues"
+  },
+  "homepage": "https://github.com/Tenryu/dummy-image#readme"
+}
