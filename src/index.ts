@@ -7,9 +7,11 @@ type DummyImgPattern =
   'white'
   ;
 
+/**
+ * ダミー画像生成
+ * 使用サイト : https://placehold.jp/#advanced-tab
+ */
 export class DummyImage {
-  // 使用サイト
-  // https://placehold.jp/#advanced-tab
 
   /**
    * 指定したサイズの画像URL取得
