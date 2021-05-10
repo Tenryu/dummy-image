@@ -1,12 +1,12 @@
 # DummyImage
 
-ja / [en](./README.en.md)
+[ja](./README.md) / en
 
-ダミーの画像を簡単に生成
+Easily generate dummy images.
 
-## 使い方
+## Usage
 
-### ランダム
+### Random
 
 ```TypeScript
 import { DummyImage } from '@tenryu/dummy-image';
@@ -18,7 +18,7 @@ console.log(imageUrl);
 
 ![image](http://placehold.jp/90ee90/a9a9a9/150x150.png?text=w:%20150%0Ah:%20150)
 
-### オプションの指定
+### Specifying options
 
 ```TypeScript
 import { DummyImage } from '@tenryu/dummy-image';
@@ -35,7 +35,7 @@ console.log(imageUrl);
 
 ![image](http://placehold.jp/87ceeb/a9a9a9/200x50.png?text=hoge%20piyo)
 
-## オプション
+## Option
 
 | option | description | default |
 | --- | --- | --- |
