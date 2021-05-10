@@ -1,6 +1,6 @@
 type ColorPattern =
   'gray' |
-  'skyBlue' |
+  'sky-blue' |
   'pink' |
   'green' |
   'orange' |
@@ -54,7 +54,7 @@ export class DummyImage {
         color = 'gray';
         break;
       case 1:
-        color = 'skyBlue';
+        color = 'sky-blue';
         break;
       case 2:
         color = 'pink';
@@ -83,7 +83,7 @@ export class DummyImage {
     switch (color) {
       case 'gray':
         return { bg: 'a9a9a9', msg: bgLight };
-      case 'skyBlue':
+      case 'sky-blue':
         return { bg: '87ceeb', msg: bgDark };
       case 'pink':
         return { bg: 'ffb6c1', msg: bgDark };

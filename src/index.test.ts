@@ -10,20 +10,20 @@ console.groupEnd();
 
 console.group('[test] set color');
 console.log(DummyImage.getURL({
-  color: 'skyBlue',
+  color: 'sky-blue',
 }));
 console.groupEnd();
 
 console.group('[test] set color/text');
 console.log(DummyImage.getURL({
-  color: 'skyBlue',
+  color: 'sky-blue',
   text: 'hoge piyo',
 }));
 console.groupEnd();
 
 console.group('[test] set color/width/height');
 console.log(DummyImage.getURL({
-  color: 'skyBlue',
+  color: 'sky-blue',
   width: 200,
   height: 50,
 }));
@@ -31,7 +31,7 @@ console.groupEnd();
 
 console.group('[test] set color/text/width/height');
 console.log(DummyImage.getURL({
-  color: 'skyBlue',
+  color: 'sky-blue',
   text: 'hoge piyo',
   width: 200,
   height: 50,
