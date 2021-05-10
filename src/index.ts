@@ -1,4 +1,4 @@
-type DummyImgPattern =
+type ColorPattern =
   'gray' |
   'skyBlue' |
   'pink' |
@@ -7,40 +7,48 @@ type DummyImgPattern =
   'white'
   ;
 
+type Option = {
+  color?: ColorPattern,
+  width?: number,
+  height?: number,
+  text?: string,
+};
+
+/**
+ * ダミー画像生成
+ * 使用サイト : https://placehold.jp/#advanced-tab
+ */
 export class DummyImage {
-  // 使用サイト
-  // https://placehold.jp/#advanced-tab
+
+  private static DEFAULT_OPTION = {
+    color: 'gray' as ColorPattern,
+    width: 150,
+    height: 150,
+    text: '',
+  };
 
   /**
    * 指定したサイズの画像URL取得
-   * @param {DummyImgPattern} patternId
-   * @param {number} w
-   * @param {number} h
    * @return {string} URL
+   * @param option
    */
-  static getURL(
-    patternId: DummyImgPattern = 'gray',
-    w: number = 150,
-    h: number = 150,
-  ): string {
+  static getURL(option: Option = {}): string {
+    if (!option.color) {
+      option.color = this.getRandomColorPattern();
+    }
+    const opt = { ...this.DEFAULT_OPTION, ...option };
     const host: string = 'http://placehold.jp';
-    const colorBg: string = DummyImage.getColorStr(patternId).bg;
-    const colorMsg: string = DummyImage.getColorStr(patternId).msg;
-    const encodedStr: string = encodeURI(`w: ${w}\nh: ${h}`);
-    return `${host}/${colorBg}/${colorMsg}/${w}x${h}.png?text=${encodedStr}`;
+    const colorBg: string = DummyImage.getColorStr(opt.color).bg;
+    const colorMsg: string = DummyImage.getColorStr(opt.color).msg;
+    const encodedStr: string = encodeURI(opt.text || `w: ${opt.width}\nh: ${opt.height}`);
+    return `${host}/${colorBg}/${colorMsg}/${opt.width}x${opt.height}.png?text=${encodedStr}`;
   }
 
-  /**
-   * 指定したサイズの画像URL取得 (パターンランダム)
-   * @param {number} w
-   * @param {number} h
-   * @return {string} URL
-   */
-  static getRandomURL(w: number = 150, h: number = 150): string {
+  static getRandomColorPattern() {
     const random = (min: number, max: number): number => (
       Math.floor(Math.random() * (max + 1 - min)) + min
     );
-    let color: DummyImgPattern = 'gray';
+    let color: ColorPattern = 'gray';
     switch (random(0, 5)) {
       case 0:
         color = 'gray';
@@ -61,18 +69,18 @@ export class DummyImage {
         color = 'white';
         break;
     }
-    return this.getURL(color, w, h);
+    return color;
   }
 
   /**
    * 色の組み合わせ取得処理
-   * @param patternId
+   * @param color
    * @return {bg: string, msg: string}
    */
-  private static getColorStr(patternId: DummyImgPattern): { bg: string, msg: string } {
+  private static getColorStr(color: ColorPattern): { bg: string, msg: string } {
     const bgLight = 'dcdcdc';
     const bgDark = 'a9a9a9';
-    switch (patternId) {
+    switch (color) {
       case 'gray':
         return { bg: 'a9a9a9', msg: bgLight };
       case 'skyBlue':
@@ -86,7 +94,7 @@ export class DummyImage {
       case 'white':
         return { bg: 'f5f5f5', msg: bgDark };
       default:
-        throw new Error('patternId is undefined !!');
+        throw new Error('color is undefined !!');
     }
   }
 }
