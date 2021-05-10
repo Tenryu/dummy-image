@@ -1,11 +1,11 @@
-enum DummyImgPattern {
-  gray,
-  skyBlue,
-  pink,
-  green,
-  orange,
-  white,
-}
+type DummyImgPattern =
+  'gray' |
+  'skyBlue' |
+  'pink' |
+  'green' |
+  'orange' |
+  'white'
+  ;
 
 export class DummyImage {
   // 使用サイト
@@ -19,7 +19,7 @@ export class DummyImage {
    * @return {string} URL
    */
   static getURL(
-    patternId: DummyImgPattern = DummyImgPattern.gray,
+    patternId: DummyImgPattern = 'gray',
     w: number = 150,
     h: number = 150,
   ): string {
@@ -40,7 +40,28 @@ export class DummyImage {
     const random = (min: number, max: number): number => (
       Math.floor(Math.random() * (max + 1 - min)) + min
     );
-    return this.getURL(random(0, 5), w, h);
+    let color: DummyImgPattern = 'gray';
+    switch (random(0, 5)) {
+      case 0:
+        color = 'gray';
+        break;
+      case 1:
+        color = 'skyBlue';
+        break;
+      case 2:
+        color = 'pink';
+        break;
+      case 3:
+        color = 'green';
+        break;
+      case 4:
+        color = 'orange';
+        break;
+      case 5:
+        color = 'white';
+        break;
+    }
+    return this.getURL(color, w, h);
   }
 
   /**
@@ -52,17 +73,17 @@ export class DummyImage {
     const bgLight = 'dcdcdc';
     const bgDark = 'a9a9a9';
     switch (patternId) {
-      case DummyImgPattern.gray:
+      case 'gray':
         return { bg: 'a9a9a9', msg: bgLight };
-      case DummyImgPattern.skyBlue:
+      case 'skyBlue':
         return { bg: '87ceeb', msg: bgDark };
-      case DummyImgPattern.pink:
+      case 'pink':
         return { bg: 'ffb6c1', msg: bgDark };
-      case DummyImgPattern.green:
+      case 'green':
         return { bg: '90ee90', msg: bgDark };
-      case DummyImgPattern.orange:
+      case 'orange':
         return { bg: 'ffa500', msg: bgDark };
-      case DummyImgPattern.white:
+      case 'white':
         return { bg: 'f5f5f5', msg: bgDark };
       default:
         throw new Error('patternId is undefined !!');
