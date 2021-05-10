@@ -44,7 +44,7 @@ export class DummyImage {
     return `${host}/${colorBg}/${colorMsg}/${opt.width}x${opt.height}.png?text=${encodedStr}`;
   }
 
-  static getRandomColorPattern() {
+  private static getRandomColorPattern() {
     const random = (min: number, max: number): number => (
       Math.floor(Math.random() * (max + 1 - min)) + min
     );
