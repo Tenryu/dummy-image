@@ -37,9 +37,9 @@ console.log(imageUrl);
 
 ## オプション
 
-| option         | description                                            |
-| ----------- | ------------------------------------------------ |
-| `color`   | 'gray', 'sky-blue', 'pink', 'green', 'orange', 'white' |
-| `width`     | width (px) |
-| `height` | height (px)  |
-| `text`    | text in image |
+| option | description | default |
+| --- | --- | --- |
+| `color`   | 'gray', 'sky-blue', 'pink', 'green', 'orange', 'white' | random |
+| `width`     | width (px) | 150 |
+| `height` | height (px)  | 150 |
+| `text`    | text in image |  |
